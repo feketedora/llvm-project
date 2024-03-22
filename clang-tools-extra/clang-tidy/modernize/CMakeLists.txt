@@ -36,6 +36,7 @@ add_clang_library(clangTidyModernizeModule
   UseNoexceptCheck.cpp
   UseNullptrCheck.cpp
   UseOverrideCheck.cpp
+  UseRangesCheck.cpp
   UseTrailingReturnTypeCheck.cpp
   UseTransparentFunctorsCheck.cpp
   UseUncaughtExceptionsCheck.cpp

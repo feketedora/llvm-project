@@ -13,6 +13,7 @@ add_clang_library(clangTidyReadabilityModule
   ConvertMemberFunctionsToStatic.cpp
   DeleteNullPointerCheck.cpp
   DuplicateIncludeCheck.cpp
+  EarlyExitCheck.cpp
   ElseAfterReturnCheck.cpp
   FunctionCognitiveComplexityCheck.cpp
   FunctionSizeCheck.cpp
@@ -39,6 +40,7 @@ add_clang_library(clangTidyReadabilityModule
   RedundantSmartptrGetCheck.cpp
   RedundantStringCStrCheck.cpp
   RedundantStringInitCheck.cpp
+  SimplifyBoolExpressionsCheck.cpp
   SimplifyBooleanExprCheck.cpp
   SimplifySubscriptExprCheck.cpp
   StaticAccessedThroughInstanceCheck.cpp
