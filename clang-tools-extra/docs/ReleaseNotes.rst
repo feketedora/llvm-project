@@ -123,6 +123,21 @@ New checks
   Finds initializer lists for aggregate types that could be
   written as designated initializers instead.
 
+- New :doc:`modernize-use-ranges
+  <clang-tidy/checks/modernize/use-ranges>` check.
+
+  FIXME: add release notes.
+
+- New :doc:`readability-early-exit
+  <clang-tidy/checks/readability/early-exit>` check.
+
+  FIXME: add release notes.
+
+- New :doc:`readability-simplify-bool-expressions
+  <clang-tidy/checks/readability/simplify-bool-expressions>` check.
+
+  FIXME: add release notes.
+
 - New :doc:`readability-use-std-min-max
   <clang-tidy/checks/readability/use-std-min-max>` check.
 

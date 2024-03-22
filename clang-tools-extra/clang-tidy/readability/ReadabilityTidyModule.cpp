@@ -21,6 +21,7 @@
 #include "ConvertMemberFunctionsToStatic.h"
 #include "DeleteNullPointerCheck.h"
 #include "DuplicateIncludeCheck.h"
+#include "EarlyExitCheck.h"
 #include "ElseAfterReturnCheck.h"
 #include "FunctionCognitiveComplexityCheck.h"
 #include "FunctionSizeCheck.h"
@@ -49,6 +50,7 @@
 #include "RedundantStringCStrCheck.h"
 #include "RedundantStringInitCheck.h"
 #include "ReferenceToConstructedTemporaryCheck.h"
+#include "SimplifyBoolExpressionsCheck.h"
 #include "SimplifyBooleanExprCheck.h"
 #include "SimplifySubscriptExprCheck.h"
 #include "StaticAccessedThroughInstanceCheck.h"
@@ -90,6 +92,8 @@ public:
         "readability-delete-null-pointer");
     CheckFactories.registerCheck<DuplicateIncludeCheck>(
         "readability-duplicate-include");
+    CheckFactories.registerCheck<EarlyExitCheck>(
+        "readability-early-exit");
     CheckFactories.registerCheck<ElseAfterReturnCheck>(
         "readability-else-after-return");
     CheckFactories.registerCheck<FunctionCognitiveComplexityCheck>(
@@ -132,6 +136,8 @@ public:
         "readability-redundant-preprocessor");
     CheckFactories.registerCheck<ReferenceToConstructedTemporaryCheck>(
         "readability-reference-to-constructed-temporary");
+    CheckFactories.registerCheck<SimplifyBoolExpressionsCheck>(
+        "readability-simplify-bool-expressions");
     CheckFactories.registerCheck<SimplifySubscriptExprCheck>(
         "readability-simplify-subscript-expr");
     CheckFactories.registerCheck<StaticAccessedThroughInstanceCheck>(

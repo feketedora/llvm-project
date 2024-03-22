@@ -39,6 +39,7 @@ add_clang_library(clangTidyModernizeModule
   UseNoexceptCheck.cpp
   UseNullptrCheck.cpp
   UseOverrideCheck.cpp
+  UseRangesCheck.cpp
   UseStartsEndsWithCheck.cpp
   UseStdNumbersCheck.cpp
   UseStdPrintCheck.cpp

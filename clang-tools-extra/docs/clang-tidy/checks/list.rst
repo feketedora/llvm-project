@@ -297,6 +297,7 @@ Clang-Tidy Checks
    :doc:`modernize-use-noexcept <modernize/use-noexcept>`, "Yes"
    :doc:`modernize-use-nullptr <modernize/use-nullptr>`, "Yes"
    :doc:`modernize-use-override <modernize/use-override>`, "Yes"
+   :doc:`modernize-use-ranges <modernize/use-ranges>`, "Yes"
    :doc:`modernize-use-starts-ends-with <modernize/use-starts-ends-with>`, "Yes"
    :doc:`modernize-use-std-numbers <modernize/use-std-numbers>`, "Yes"
    :doc:`modernize-use-std-print <modernize/use-std-print>`, "Yes"
@@ -351,6 +352,7 @@ Clang-Tidy Checks
    :doc:`readability-convert-member-functions-to-static <readability/convert-member-functions-to-static>`, "Yes"
    :doc:`readability-delete-null-pointer <readability/delete-null-pointer>`, "Yes"
    :doc:`readability-duplicate-include <readability/duplicate-include>`, "Yes"
+   :doc:`readability-early-exit <readability/early-exit>`, "Yes"
    :doc:`readability-else-after-return <readability/else-after-return>`, "Yes"
    :doc:`readability-function-cognitive-complexity <readability/function-cognitive-complexity>`,
    :doc:`readability-function-size <readability/function-size>`,
@@ -379,6 +381,7 @@ Clang-Tidy Checks
    :doc:`readability-redundant-string-cstr <readability/redundant-string-cstr>`, "Yes"
    :doc:`readability-redundant-string-init <readability/redundant-string-init>`, "Yes"
    :doc:`readability-reference-to-constructed-temporary <readability/reference-to-constructed-temporary>`,
+   :doc:`readability-simplify-bool-expressions <readability/simplify-bool-expressions>`, "Yes"
    :doc:`readability-simplify-boolean-expr <readability/simplify-boolean-expr>`, "Yes"
    :doc:`readability-simplify-subscript-expr <readability/simplify-subscript-expr>`, "Yes"
    :doc:`readability-static-accessed-through-instance <readability/static-accessed-through-instance>`, "Yes"
