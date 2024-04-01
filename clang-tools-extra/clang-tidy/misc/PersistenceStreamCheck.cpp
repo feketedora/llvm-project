@@ -14,25 +14,38 @@ using namespace clang::ast_matchers;
 namespace clang::tidy::misc {
 
 void PersistenceStreamCheck::registerMatchers(MatchFinder *Finder) {
+  auto AnyOf = anyOf(
+      matchesName("[f|F]ile"),
+      hasType(asString("std::fstream")),
+      hasType(asString("std::ifstream")),
+      hasType(asString("std::ofstream")),
+      hasType(cxxRecordDecl(isSameOrDerivedFrom("std::fstream"))),
+      hasType(cxxRecordDecl(isSameOrDerivedFrom("std::ifstream"))),
+      hasType(cxxRecordDecl(isSameOrDerivedFrom("std::ofstream"))));
   Finder->addMatcher(
       recordDecl(unless(isExpansionInSystemHeader()),
                  unless(matchesName("[d|D]ata[a|A]ccess|[P|p]ersiste[nce|r]")),
-                 forEach(fieldDecl(anyOf(
-                     matchesName("[f|F]ile"),
-                     hasType(asString("std::fstream")),
-                     hasType(asString("std::ifstream")),
-                     hasType(asString("std::ofstream")),
-                     hasType(cxxRecordDecl(isSameOrDerivedFrom("std::fstream"))),
-                     hasType(cxxRecordDecl(isSameOrDerivedFrom("std::ifstream"))),
-                     hasType(cxxRecordDecl(isSameOrDerivedFrom("std::ofstream")))
-                     )).bind("file-field")))
+                 forEach(fieldDecl(AnyOf).bind("file-field")))
+          .bind("non-persistence-class"),
+      this);
+  Finder->addMatcher(
+      recordDecl(unless(isExpansionInSystemHeader()),
+                 unless(matchesName("[d|D]ata[a|A]ccess|[P|p]ersiste[nce|r]")),
+                 forEach(functionDecl(hasAnyParameter(AnyOf)).bind("file-param")))
           .bind("non-persistence-class"),
       this);
 }
 
 void PersistenceStreamCheck::check(const MatchFinder::MatchResult &Result) {
-  const auto * FileField = Result.Nodes.getNodeAs<FieldDecl>("file-field");
-  diag(FileField->getLocation(), "found file field outside persistence class");
+    const auto * FileField = Result.Nodes.getNodeAs<FieldDecl>("file-field");
+    if (FileField != nullptr) {
+      diag(FileField->getLocation(), "found file stream field outside persistence class");
+    }
+    const auto *FunctionWithFileParam = Result.Nodes.getNodeAs<FunctionDecl>("file-param");
+    if (FunctionWithFileParam != nullptr) {
+      diag(FunctionWithFileParam->getLocation(),
+           "function has file stream parameter outside persistence class");
+    }
 }
 
 } // namespace clang::tidy::misc
