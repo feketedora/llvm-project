@@ -117,6 +117,11 @@ New checks
   to reading out-of-bounds data due to inadequate or incorrect string null
   termination.
 
+- New :doc:`misc-persistence-stream
+  <clang-tidy/checks/misc/persistence-stream>` check.
+
+  FIXME: add release notes.
+
 - New :doc:`modernize-use-designated-initializers
   <clang-tidy/checks/modernize/use-designated-initializers>` check.
 
