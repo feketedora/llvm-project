@@ -158,6 +158,11 @@ New checks
 
   Detects confusable Unicode identifiers.
 
+- New :doc:`misc-persistence-stream
+  <clang-tidy/checks/misc/persistence-stream>` check.
+
+  FIXME: add release notes.
+
 - New :doc:`bugprone-assignment-in-if-condition
   <clang-tidy/checks/bugprone/assignment-in-if-condition>` check.
 
