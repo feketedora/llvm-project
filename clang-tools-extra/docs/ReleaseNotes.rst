@@ -122,6 +122,11 @@ New checks
 
   FIXME: add release notes.
 
+- New :doc:`misc-structured-namespace
+  <clang-tidy/checks/misc/structured-namespace>` check.
+
+  FIXME: add release notes.
+
 - New :doc:`modernize-use-designated-initializers
   <clang-tidy/checks/modernize/use-designated-initializers>` check.
 
