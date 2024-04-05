@@ -23,6 +23,10 @@ public:
       : ClangTidyCheck(Name, Context) {}
   void registerMatchers(ast_matchers::MatchFinder *Finder) override;
   void check(const ast_matchers::MatchFinder::MatchResult &Result) override;
+
+private:
+  void checkOne(const ast_matchers::MatchFinder::MatchResult &Result,
+                std::string const &match, std::string const &compareTo);
 };
 
 } // namespace clang::tidy::misc
