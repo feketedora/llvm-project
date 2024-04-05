@@ -1,17 +1,27 @@
 // RUN: %check_clang_tidy %s misc-structured-namespace %t
 
 namespace view {
-	class Model {};
+	class oneModel {};
+// CHECK-MESSAGES: :[[@LINE-1]]:5: warning: model class cannot be in view namespace [misc-structured-namespace]
 }
-// CHECK-MESSAGES: :[[@LINE-1]]:6: warning: function 'f' is insufficiently awesome [misc-structured-namespace]
-
 
 namespace my::model {
-	class Model {};
+	class twoModel {};
 }
 
 namespace Model::my {
-	class Mymodel {};
+	class ThreeMymodel {};
 }
 
-class MyModel {};
+class FourMyModel {};
+
+class View {};
+
+namespace my::awesome::view {
+	class HereIsMyview{};
+};
+
+namespace Modeling {
+	class WrongPlacedView {};
+// CHECK-MESSAGES: :[[@LINE-1]]:5: warning: view class cannot be in model namespace [misc-structured-namespace]
+}
