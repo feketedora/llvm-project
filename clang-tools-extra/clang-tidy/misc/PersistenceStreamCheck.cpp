@@ -25,14 +25,12 @@ void PersistenceStreamCheck::registerMatchers(MatchFinder *Finder) {
   Finder->addMatcher(
       recordDecl(unless(isExpansionInSystemHeader()),
                  unless(matchesName("[d|D]ata[a|A]ccess|[P|p]ersiste[nce|r]")),
-                 forEach(fieldDecl(AnyOf).bind("file-field")))
-          .bind("non-persistence-class"),
+                 forEach(fieldDecl(AnyOf).bind("file-field"))),
       this);
   Finder->addMatcher(
       recordDecl(unless(isExpansionInSystemHeader()),
                  unless(matchesName("[d|D]ata[a|A]ccess|[P|p]ersiste[nce|r]")),
-                 forEach(functionDecl(hasAnyParameter(AnyOf)).bind("file-param")))
-          .bind("non-persistence-class"),
+                 forEach(functionDecl(hasAnyParameter(AnyOf)).bind("file-param"))),
       this);
 }
 

@@ -31,6 +31,7 @@ add_clang_library(clangTidyMiscModule
   NonCopyableObjects.cpp
   NonPrivateMemberVariablesInClassesCheck.cpp
   PersistenceStreamCheck.cpp
+  PublicMembersCheck.cpp
   RedundantExpressionCheck.cpp
   StaticAssertCheck.cpp
   StructuredNamespaceCheck.cpp
