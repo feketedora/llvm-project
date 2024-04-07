@@ -258,9 +258,10 @@ Clang-Tidy Checks
    :doc:`misc-non-copyable-objects <misc/non-copyable-objects>`,
    :doc:`misc-non-private-member-variables-in-classes <misc/non-private-member-variables-in-classes>`,
    :doc:`misc-persistence-stream <misc/persistence-stream>`,
+   :doc:`misc-public-members <misc/public-members>`, "Yes"
    :doc:`misc-redundant-expression <misc/redundant-expression>`, "Yes"
    :doc:`misc-static-assert <misc/static-assert>`, "Yes"
-   :doc:`misc-structured-namespace <misc/structured-namespace>`, "Yes"
+   :doc:`misc-structured-namespace <misc/structured-namespace>`,
    :doc:`misc-throw-by-value-catch-by-reference <misc/throw-by-value-catch-by-reference>`,
    :doc:`misc-unconventional-assign-operator <misc/unconventional-assign-operator>`,
    :doc:`misc-uniqueptr-reset-release <misc/uniqueptr-reset-release>`, "Yes"
