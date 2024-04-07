@@ -20,6 +20,7 @@
 #include "NonCopyableObjects.h"
 #include "NonPrivateMemberVariablesInClassesCheck.h"
 #include "PersistenceStreamCheck.h"
+#include "PublicMembersCheck.h"
 #include "RedundantExpressionCheck.h"
 #include "StaticAssertCheck.h"
 #include "StructuredNamespaceCheck.h"
@@ -57,6 +58,8 @@ public:
         "misc-non-private-member-variables-in-classes");
     CheckFactories.registerCheck<PersistenceStreamCheck>(
         "misc-persistence-stream");
+    CheckFactories.registerCheck<PublicMembersCheck>(
+        "misc-public-members");
     CheckFactories.registerCheck<RedundantExpressionCheck>(
         "misc-redundant-expression");
     CheckFactories.registerCheck<StaticAssertCheck>("misc-static-assert");

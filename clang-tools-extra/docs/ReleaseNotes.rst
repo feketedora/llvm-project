@@ -166,6 +166,11 @@ New checks
 - New :doc:`bugprone-assignment-in-if-condition
   <clang-tidy/checks/bugprone/assignment-in-if-condition>` check.
 
+- New :doc:`misc-public-members
+  <clang-tidy/checks/misc/public-members>` check.
+
+  FIXME: add release notes.
+
 - New :doc:`misc-structured-namespace
   <clang-tidy/checks/misc/structured-namespace>` check.
 
