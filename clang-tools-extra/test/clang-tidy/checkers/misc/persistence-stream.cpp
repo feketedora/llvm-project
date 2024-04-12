@@ -1,4 +1,4 @@
-// RUN: %check_clang_tidy %s misc-persistence-stream %t
+// RUN: %check_clang_tidy -std=c++14-or-later %s misc-persistence-stream %t
 
 #include <iostream>
 #include <fstream>
@@ -8,18 +8,18 @@ class MyStream : public std::fstream {};
 class MyModel
 {
 	void write(std::fstream f){}
-// CHECK-MESSAGES: :[[@LINE-1]]:5: warning: found file stream parameter outside persistence class [misc-persistence-stream]
+// CHECK-MESSAGES: :[[@LINE-1]]:7: warning: function has file stream parameter outside persistence class [misc-persistence-stream]
 	void test(int a, bool b) {}
 
 	int mFile;
-// CHECK-MESSAGES: :[[@LINE-1]]:5: warning: found file stream field outside persistence class [misc-persistence-stream]
+// CHECK-MESSAGES: :[[@LINE-1]]:6: warning: found file stream field outside persistence class [misc-persistence-stream]
 	bool mDummy;
 	char file2;
-// CHECK-MESSAGES: :[[@LINE-1]]:5: warning: found file stream field outside persistence class [misc-persistence-stream]
+// CHECK-MESSAGES: :[[@LINE-1]]:7: warning: found file stream field outside persistence class [misc-persistence-stream]
 	std::fstream thisisspecial;
-// CHECK-MESSAGES: :[[@LINE-1]]:5: warning: found file stream field outside persistence class [misc-persistence-stream]
+// CHECK-MESSAGES: :[[@LINE-1]]:15: warning: found file stream field outside persistence class [misc-persistence-stream]
 	MyStream y;
-// CHECK-MESSAGES: :[[@LINE-1]]:5: warning: found file stream field outside persistence class [misc-persistence-stream]
+// CHECK-MESSAGES: :[[@LINE-1]]:11: warning: found file stream field outside persistence class [misc-persistence-stream]
 };
 
 class MyPersistence {};
