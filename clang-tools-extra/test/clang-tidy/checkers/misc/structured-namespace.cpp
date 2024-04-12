@@ -2,7 +2,7 @@
 
 namespace view {
 	class oneModel {};
-// CHECK-MESSAGES: :[[@LINE-1]]:5: warning: model class cannot be in view namespace [misc-structured-namespace]
+// CHECK-MESSAGES: :[[@LINE-1]]:8: warning: model class cannot be in view namespace [misc-structured-namespace]
 }
 
 namespace my::model {
@@ -23,5 +23,5 @@ namespace my::awesome::view {
 
 namespace Modeling {
 	class WrongPlacedView {};
-// CHECK-MESSAGES: :[[@LINE-1]]:5: warning: view class cannot be in model namespace [misc-structured-namespace]
+// CHECK-MESSAGES: :[[@LINE-1]]:8: warning: view class cannot be in model namespace [misc-structured-namespace]
 }
