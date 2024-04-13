@@ -140,6 +140,11 @@ New checks
   Ensures that switch statements without default cases are flagged, focuses only
   on covering cases with non-enums where the compiler may not issue warnings.
 
+- New :doc:`misc-persistence-stream
+  <clang-tidy/checks/misc/persistence-stream>` check.
+
+  FIXME: add release notes.
+
 - New :doc:`modernize-use-ranges
   <clang-tidy/checks/modernize/use-ranges>` check.
 
