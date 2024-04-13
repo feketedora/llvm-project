@@ -269,6 +269,7 @@ Clang-Tidy Checks
    `misc-persistence-stream <misc/persistence-stream.html>`_, "Yes"
    `misc-redundant-expression <misc/redundant-expression.html>`_, "Yes"
    `misc-static-assert <misc/static-assert.html>`_, "Yes"
+   `misc-structured-namespace <misc/structured-namespace.html>`_, "Yes"
    `misc-throw-by-value-catch-by-reference <misc/throw-by-value-catch-by-reference.html>`_,
    `misc-unconventional-assign-operator <misc/unconventional-assign-operator.html>`_,
    `misc-uniqueptr-reset-release <misc/uniqueptr-reset-release.html>`_, "Yes"

@@ -145,6 +145,11 @@ New checks
 
   FIXME: add release notes.
 
+- New :doc:`misc-structured-namespace
+  <clang-tidy/checks/misc/structured-namespace>` check.
+
+  FIXME: add release notes.
+
 - New :doc:`modernize-use-ranges
   <clang-tidy/checks/modernize/use-ranges>` check.
 

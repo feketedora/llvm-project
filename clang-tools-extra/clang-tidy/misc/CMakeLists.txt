@@ -33,6 +33,7 @@ add_clang_library(clangTidyMiscModule
   PersistenceStreamCheck.cpp
   RedundantExpressionCheck.cpp
   StaticAssertCheck.cpp
+  StructuredNamespaceCheck.cpp
   ThrowByValueCatchByReferenceCheck.cpp
   UnconventionalAssignOperatorCheck.cpp
   UniqueptrResetReleaseCheck.cpp
