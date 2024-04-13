@@ -140,6 +140,21 @@ New checks
   Ensures that switch statements without default cases are flagged, focuses only
   on covering cases with non-enums where the compiler may not issue warnings.
 
+- New :doc:`modernize-use-ranges
+  <clang-tidy/checks/modernize/use-ranges>` check.
+
+  FIXME: add release notes.
+
+- New :doc:`readability-early-exit
+  <clang-tidy/checks/readability/early-exit>` check.
+
+  FIXME: add release notes.
+
+- New :doc:`readability-simplify-bool-expressions
+  <clang-tidy/checks/readability/simplify-bool-expressions>` check.
+
+  FIXME: add release notes.
+
 - New :doc:`bugprone-unique-ptr-array-mismatch
   <clang-tidy/checks/bugprone/unique-ptr-array-mismatch>` check.
 
