@@ -140,6 +140,11 @@ New checks
   Ensures that switch statements without default cases are flagged, focuses only
   on covering cases with non-enums where the compiler may not issue warnings.
 
+- New :doc:`misc-illegal-layer-access
+  <clang-tidy/checks/misc/illegal-layer-access>` check.
+
+  FIXME: add release notes.
+
 - New :doc:`misc-model-no-qwidget
   <clang-tidy/checks/misc/model-no-qwidget>` check.
 
@@ -155,8 +160,8 @@ New checks
 
   FIXME: add release notes.
 
-- New :doc:`misc-public-members
-  <clang-tidy/checks/misc/public-members>` check.
+- New :doc:`misc-representation-leak
+  <clang-tidy/checks/misc/representation-leak>` check.
 
   FIXME: add release notes.
 

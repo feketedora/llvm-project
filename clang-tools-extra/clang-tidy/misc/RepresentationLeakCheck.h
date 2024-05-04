@@ -1,4 +1,4 @@
-//===--- PublicMembersCheck.h - clang-tidy ----------------------*- C++ -*-===//
+//===--- RepresentationLeakCheck.h - clang-tidy -----------------*- C++ -*-===//
 //
 // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
@@ -6,8 +6,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef LLVM_CLANG_TOOLS_EXTRA_CLANG_TIDY_MISC_PUBLICMEMBERSCHECK_H
-#define LLVM_CLANG_TOOLS_EXTRA_CLANG_TIDY_MISC_PUBLICMEMBERSCHECK_H
+#ifndef LLVM_CLANG_TOOLS_EXTRA_CLANG_TIDY_MISC_REPRESENTATIONLEAKCHECK_H
+#define LLVM_CLANG_TOOLS_EXTRA_CLANG_TIDY_MISC_REPRESENTATIONLEAKCHECK_H
 
 #include "../ClangTidyCheck.h"
 
@@ -16,10 +16,10 @@ namespace clang::tidy::misc {
 /// FIXME: Write a short description.
 ///
 /// For the user-facing documentation see:
-/// http://clang.llvm.org/extra/clang-tidy/checks/misc/public-members.html
-class PublicMembersCheck : public ClangTidyCheck {
+/// http://clang.llvm.org/extra/clang-tidy/checks/misc/representation-leak.html
+class RepresentationLeakCheck : public ClangTidyCheck {
 public:
-  PublicMembersCheck(StringRef Name, ClangTidyContext *Context)
+  RepresentationLeakCheck(StringRef Name, ClangTidyContext *Context)
       : ClangTidyCheck(Name, Context) {}
   void registerMatchers(ast_matchers::MatchFinder *Finder) override;
   void check(const ast_matchers::MatchFinder::MatchResult &Result) override;
@@ -27,4 +27,4 @@ public:
 
 } // namespace clang::tidy::misc
 
-#endif // LLVM_CLANG_TOOLS_EXTRA_CLANG_TIDY_MISC_PUBLICMEMBERSCHECK_H
+#endif // LLVM_CLANG_TOOLS_EXTRA_CLANG_TIDY_MISC_REPRESENTATIONLEAKCHECK_H

@@ -10,12 +10,19 @@
 #define LLVM_CLANG_TOOLS_EXTRA_CLANG_TIDY_UTILITIES_H
 
 #include <string>
+#include <vector>
 
 namespace clang::tidy::utils {
 
 const std::string ModelRegex = "::.*[m|M]odel$";
+const std::string ViewRegex = "::.*[v|V]iew$";
+const std::string PersistenceRegex = "::.*([d|D]ata[a|A]ccess|[P|p]ersiste[nce|r])$"; // TODO check
 
 const std::string ModelNodeId = "model";
+const std::string ViewNodeId = "view";
+const std::string PersistenceNodeId = "persistence";
+
+std::vector<std::string> splitLowercase(std::string const &s, std::string const &delimiter);
 
 } // namespace clang::tidy::utils
 

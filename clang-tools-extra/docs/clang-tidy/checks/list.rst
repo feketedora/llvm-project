@@ -258,6 +258,7 @@ Clang-Tidy Checks
    `misc-const-correctness <misc/const-correctness.html>`_, "Yes"
    `misc-definitions-in-headers <misc/definitions-in-headers.html>`_, "Yes"
    `misc-header-include-cycle <misc/header-include-cycle.html>`_,
+   `misc-illegal-layer-access <misc/illegal-layer-access.html>`_, "Yes"
    `misc-include-cleaner <misc/include-cleaner.html>`_, "Yes"
    `misc-misleading-bidirectional <misc/misleading-bidirectional.html>`_,
    `misc-misleading-identifier <misc/misleading-identifier.html>`_,

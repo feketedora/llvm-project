@@ -13,6 +13,7 @@
 #include "ConstCorrectnessCheck.h"
 #include "DefinitionsInHeadersCheck.h"
 #include "HeaderIncludeCycleCheck.h"
+#include "IllegalLayerAccessCheck.h"
 #include "IncludeCleanerCheck.h"
 #include "MisleadingBidirectional.h"
 #include "MisleadingIdentifier.h"
@@ -23,7 +24,7 @@
 #include "NonCopyableObjects.h"
 #include "NonPrivateMemberVariablesInClassesCheck.h"
 #include "PersistenceStreamCheck.h"
-#include "PublicMembersCheck.h"
+#include "RepresentationLeakCheck.h"
 #include "RedundantExpressionCheck.h"
 #include "StaticAssertCheck.h"
 #include "StructuredNamespaceCheck.h"
@@ -49,6 +50,8 @@ public:
         "misc-definitions-in-headers");
     CheckFactories.registerCheck<HeaderIncludeCycleCheck>(
         "misc-header-include-cycle");
+    CheckFactories.registerCheck<IllegalLayerAccessCheck>(
+        "misc-illegal-layer-access");
     CheckFactories.registerCheck<IncludeCleanerCheck>("misc-include-cleaner");
     CheckFactories.registerCheck<MisleadingBidirectionalCheck>(
         "misc-misleading-bidirectional");
@@ -66,8 +69,8 @@ public:
         "misc-non-private-member-variables-in-classes");
     CheckFactories.registerCheck<PersistenceStreamCheck>(
         "misc-persistence-stream");
-    CheckFactories.registerCheck<PublicMembersCheck>(
-        "misc-public-members");
+    CheckFactories.registerCheck<RepresentationLeakCheck>(
+        "misc-representation-leak");
     CheckFactories.registerCheck<RedundantExpressionCheck>(
         "misc-redundant-expression");
     CheckFactories.registerCheck<StaticAssertCheck>("misc-static-assert");

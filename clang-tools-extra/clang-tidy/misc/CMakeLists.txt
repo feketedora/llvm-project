@@ -21,6 +21,7 @@ add_clang_library(clangTidyMiscModule
   DefinitionsInHeadersCheck.cpp
   ConfusableIdentifierCheck.cpp
   HeaderIncludeCycleCheck.cpp
+  IllegalLayerAccessCheck.cpp
   IncludeCleanerCheck.cpp
   MiscTidyModule.cpp
   MisleadingBidirectional.cpp
@@ -32,7 +33,7 @@ add_clang_library(clangTidyMiscModule
   NonCopyableObjects.cpp
   NonPrivateMemberVariablesInClassesCheck.cpp
   PersistenceStreamCheck.cpp
-  PublicMembersCheck.cpp
+  RepresentationLeakCheck.cpp
   RedundantExpressionCheck.cpp
   StaticAssertCheck.cpp
   StructuredNamespaceCheck.cpp
