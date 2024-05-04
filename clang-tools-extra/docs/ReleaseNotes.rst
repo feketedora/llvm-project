@@ -140,6 +140,11 @@ New checks
   Ensures that switch statements without default cases are flagged, focuses only
   on covering cases with non-enums where the compiler may not issue warnings.
 
+- New :doc:`misc-model-no-qwidget
+  <clang-tidy/checks/misc/model-no-qwidget>` check.
+
+  FIXME: add release notes.
+
 - New :doc:`misc-persistence-stream
   <clang-tidy/checks/misc/persistence-stream>` check.
 

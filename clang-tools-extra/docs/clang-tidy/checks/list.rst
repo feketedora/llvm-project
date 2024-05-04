@@ -262,15 +262,16 @@ Clang-Tidy Checks
    `misc-misleading-bidirectional <misc/misleading-bidirectional.html>`_,
    `misc-misleading-identifier <misc/misleading-identifier.html>`_,
    `misc-misplaced-const <misc/misplaced-const.html>`_,
+   `misc-model-no-qwidget <misc/model-no-qwidget.html>`_,
    `misc-new-delete-overloads <misc/new-delete-overloads.html>`_,
    `misc-no-recursion <misc/no-recursion.html>`_,
    `misc-non-copyable-objects <misc/non-copyable-objects.html>`_,
    `misc-non-private-member-variables-in-classes <misc/non-private-member-variables-in-classes.html>`_,
-   `misc-persistence-stream <misc/persistence-stream.html>`_, "Yes"
-   `misc-public-members <misc/public-members.html>`_, "Yes"
+   `misc-persistence-stream <misc/persistence-stream.html>`_,
+   `misc-public-members <misc/public-members.html>`_,
    `misc-redundant-expression <misc/redundant-expression.html>`_, "Yes"
    `misc-static-assert <misc/static-assert.html>`_, "Yes"
-   `misc-structured-namespace <misc/structured-namespace.html>`_, "Yes"
+   `misc-structured-namespace <misc/structured-namespace.html>`_,
    `misc-throw-by-value-catch-by-reference <misc/throw-by-value-catch-by-reference.html>`_,
    `misc-unconventional-assign-operator <misc/unconventional-assign-operator.html>`_,
    `misc-uniqueptr-reset-release <misc/uniqueptr-reset-release.html>`_, "Yes"
