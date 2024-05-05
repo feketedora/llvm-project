@@ -22,6 +22,7 @@ void RepresentationLeakCheck::addCXXMethodMatcher(MatchFinder *Finder, const std
                                            returns(referenceType(pointee(unless(isConstQualified())))));
   Finder->addMatcher(cxxMethodDecl(unless(isExpansionInSystemHeader()),
                                    isPublic(),
+                                   unless(hasName("operator=")),
                                    anyOf(PointerReturnType, NonConstReferenceReturnType))
                       .bind(Id + "-leaking-return-type"),
                      this);
