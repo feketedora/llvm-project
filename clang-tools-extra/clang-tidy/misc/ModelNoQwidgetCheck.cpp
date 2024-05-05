@@ -16,7 +16,7 @@ using namespace clang::ast_matchers;
 namespace clang::tidy::misc {
 
 void ModelNoQwidgetCheck::registerMatchers(MatchFinder *Finder) {
-  auto DerivedFromQWidget = isSameOrDerivedFrom(hasName("::QWidget"));
+  auto DerivedFromQWidget = isSameOrDerivedFrom("::QWidget");
   auto CxxRecordDerivedFromQWidget = cxxRecordDecl(DerivedFromQWidget);
   auto CxxRecordDerivedFromQWidgetPointer = pointsTo(CxxRecordDerivedFromQWidget);
   auto CxxRecordDerivedFromQWidgetReference = references(CxxRecordDerivedFromQWidget);

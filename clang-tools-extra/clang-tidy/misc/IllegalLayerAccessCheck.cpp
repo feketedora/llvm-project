@@ -16,18 +16,19 @@ namespace clang::tidy::misc {
 
 void IllegalLayerAccessCheck::registerMatchers(MatchFinder *Finder) {
   // FIXME: Add matchers.
-  Finder->addMatcher(functionDecl().bind("x"), this);
+  // TODO model -> view, view -> persistence access is illegal
+  /*Finder->addMatcher(functionDecl().bind("x"), this);*/
 }
 
 void IllegalLayerAccessCheck::check(const MatchFinder::MatchResult &Result) {
   // FIXME: Add callback implementation.
-  const auto *MatchedDecl = Result.Nodes.getNodeAs<FunctionDecl>("x");
+  /*const auto *MatchedDecl = Result.Nodes.getNodeAs<FunctionDecl>("x");
   if (!MatchedDecl->getIdentifier() || MatchedDecl->getName().startswith("awesome_"))
     return;
   diag(MatchedDecl->getLocation(), "function %0 is insufficiently awesome")
       << MatchedDecl
       << FixItHint::CreateInsertion(MatchedDecl->getLocation(), "awesome_");
-  diag(MatchedDecl->getLocation(), "insert 'awesome'", DiagnosticIDs::Note);
+  diag(MatchedDecl->getLocation(), "insert 'awesome'", DiagnosticIDs::Note);*/
 }
 
 } // namespace clang::tidy::misc

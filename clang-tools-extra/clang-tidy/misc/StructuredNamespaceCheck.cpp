@@ -19,7 +19,7 @@ void StructuredNamespaceCheck::addCXXRecordMatcher(MatchFinder *Finder, const st
                                                    const std::string & Id) {
   Finder->addMatcher(cxxRecordDecl(unless(isExpansionInSystemHeader()),
                                    isDefinition(),
-                                   matchesName(Regex))
+                                   isSameOrDerivedFrom(matchesName(Regex)))
                       .bind(Id),
                      this);
 }

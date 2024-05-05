@@ -16,7 +16,7 @@ namespace clang::tidy::misc {
 
 void RepresentationLeakCheck::addCXXMethodMatcher(MatchFinder *Finder, const std::string &Regex,
                                                   const std::string & Id) {
-  auto RecordType = cxxRecordDecl(matchesName(Regex));
+  auto RecordType = cxxRecordDecl(isSameOrDerivedFrom(matchesName(Regex)));
   auto PointerReturnType = returns(pointsTo(RecordType));
   auto NonConstReferenceReturnType = allOf(returns(references(RecordType)),
                                            returns(referenceType(pointee(unless(isConstQualified())))));
@@ -29,8 +29,7 @@ void RepresentationLeakCheck::addCXXMethodMatcher(MatchFinder *Finder, const std
 
 void RepresentationLeakCheck::addFieldMatcher(MatchFinder *Finder, const std::string &Regex,
                                               const std::string & Id) {
-  auto RecordMatch = matchesName(Regex);
-  auto RecordType = cxxRecordDecl(RecordMatch);
+  auto RecordType = cxxRecordDecl(isSameOrDerivedFrom(matchesName(Regex)));
   auto FieldType = anyOf(hasType(RecordType),
                         hasType(pointsTo(RecordType)),
                         hasType(references(RecordType)));
