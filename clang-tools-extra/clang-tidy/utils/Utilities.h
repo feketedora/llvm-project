@@ -16,11 +16,12 @@ namespace clang::tidy::utils {
 
 const std::string ModelRegex = "::.*[m|M]odel$";
 const std::string ViewRegex = "::.*[v|V]iew$";
-const std::string PersistenceRegex = "::.*([d|D]ata[a|A]ccess|[P|p]ersiste[nce|r])$"; // TODO check
+const std::string PersistenceRegex = "::.*((d|D)ata(a|A)ccess|(P|p)ersiste(nce|r))$";
 
 const std::string ModelNodeId = "model";
 const std::string ViewNodeId = "view";
 const std::string PersistenceNodeId = "persistence";
+const std::vector<std::string> PersistenceVariants = {PersistenceNodeId, "persister", "dataaccess"};
 
 std::vector<std::string> splitLowercase(std::string const &s, std::string const &delimiter);
 

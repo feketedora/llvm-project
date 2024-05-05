@@ -25,8 +25,9 @@ public:
   void check(const ast_matchers::MatchFinder::MatchResult &Result) override;
 
 private:
-  void checkOne(const ast_matchers::MatchFinder::MatchResult &Result,
-                std::string const &match, std::string const &compareTo);
+  void checkOne(const ast_matchers::MatchFinder::MatchResult &Result, const std::string &Layer,
+                const std::string &Id, const std::string &Namespace);
+  void addCXXRecordMatcher(ast_matchers::MatchFinder *Finder, const std::string &Regex, const std::string &Id);
 };
 
 } // namespace clang::tidy::misc
