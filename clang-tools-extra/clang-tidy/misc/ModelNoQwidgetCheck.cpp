@@ -41,12 +41,14 @@ void ModelNoQwidgetCheck::registerMatchers(MatchFinder *Finder) {
                                    forEach(fieldDecl(CxxRecordDerivedFromQWidgetType)
                                             .bind("qwidget-field"))),
                      this);
-  Finder->addMatcher(cxxMethodDecl(isDefinition(),
+  Finder->addMatcher(cxxMethodDecl(unless(isExpansionInSystemHeader()),
+                                   isDefinition(),
                                    ofClass(ModelRecord),
                                    forEachDescendant(varDecl(CxxRecordDerivedFromQWidgetType)
                                                       .bind("qwidget-variable"))),
                      this);
-  Finder->addMatcher(cxxMethodDecl(isDefinition(),
+  Finder->addMatcher(cxxMethodDecl(unless(isExpansionInSystemHeader()),
+                                   isDefinition(),
                                    ofClass(ModelRecord),
                                    CxxRecordDerivedFromQWidgetReturns)
                       .bind("qwidget-return-type"),

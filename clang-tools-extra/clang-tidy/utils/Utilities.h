@@ -22,6 +22,7 @@ const std::string ModelNodeId = "model";
 const std::string ViewNodeId = "view";
 const std::string PersistenceNodeId = "persistence";
 const std::vector<std::string> PersistenceVariants = {PersistenceNodeId, "persister", "dataaccess"};
+const std::vector<std::string> LayerIds = {ModelNodeId, ViewNodeId, PersistenceNodeId};
 
 std::vector<std::string> splitLowercase(std::string const &s, std::string const &delimiter);
 

@@ -9,55 +9,60 @@
 #include "RepresentationLeakCheck.h"
 #include "clang/ASTMatchers/ASTMatchFinder.h"
 #include "../utils/Utilities.h"
-#include <string>
-#include <iostream> // TODO remove
 
 using namespace clang::ast_matchers;
 
 namespace clang::tidy::misc {
 
-void RepresentationLeakCheck::registerMatchers(MatchFinder *Finder) {
+void RepresentationLeakCheck::addCXXMethodMatcher(MatchFinder *Finder, const std::string &Regex,
+                                                  const std::string & Id) {
+  auto RecordType = cxxRecordDecl(matchesName(Regex));
+  auto PointerReturnType = returns(pointsTo(RecordType));
+  auto NonConstReferenceReturnType = allOf(returns(references(RecordType)),
+                                           returns(referenceType(pointee(unless(isConstQualified())))));
+  Finder->addMatcher(cxxMethodDecl(unless(isExpansionInSystemHeader()),
+                                   isPublic(),
+                                   anyOf(PointerReturnType, NonConstReferenceReturnType))
+                      .bind(Id + "-leaking-return-type"),
+                     this);
+}
+
+void RepresentationLeakCheck::addFieldMatcher(MatchFinder *Finder, const std::string &Regex,
+                                              const std::string & Id) {
+  auto RecordMatch = matchesName(Regex);
+  auto RecordType = cxxRecordDecl(RecordMatch);
+  auto FieldType = anyOf(hasType(RecordType),
+                        hasType(pointsTo(RecordType)),
+                        hasType(references(RecordType)));
   Finder->addMatcher(cxxRecordDecl(unless(isExpansionInSystemHeader()),
+                                   isDefinition(),
                                    forEach(fieldDecl(isPublic(),
-                                                     hasType(cxxRecordDecl(matchesName(utils::ModelRegex))))
-                                            .bind("field"))),
+                                                     FieldType)
+                                            .bind(Id + "-leaking-field"))),
                      this);
-  Finder->addMatcher(cxxMethodDecl(isPublic(),
-                                   unless(isExpansionInSystemHeader()))
-                      .bind("func"),
-                     this);
-  Finder->addMatcher(cxxMethodDecl(hasName("saveGame")).bind("TEST"), this);
+}
+
+void RepresentationLeakCheck::registerMatchers(MatchFinder *Finder) {
+  addCXXMethodMatcher(Finder, utils::ModelRegex, utils::ModelNodeId);
+  addCXXMethodMatcher(Finder, utils::ViewRegex, utils::ViewNodeId);
+  addCXXMethodMatcher(Finder, utils::PersistenceRegex, utils::PersistenceNodeId);
+
+  addFieldMatcher(Finder, utils::ModelRegex, utils::ModelNodeId);
+  addFieldMatcher(Finder, utils::ViewRegex, utils::ViewNodeId);
+  addFieldMatcher(Finder, utils::PersistenceRegex, utils::PersistenceNodeId);
 }
 
 void RepresentationLeakCheck::check(const MatchFinder::MatchResult &Result) {
-  auto *Test = Result.Nodes.getNodeAs<CXXMethodDecl>("TEST");
-  if (Test != nullptr)
-  {
-    diag(Test->getLocation(), "TEST TEST TEST warning");
-  }
-  const auto *Field = Result.Nodes.getNodeAs<FieldDecl>("field");
-  if (Field != nullptr)
-  {
-    diag(Field->getLocation(), "model is leaking (member)");
-  }
-
-  const auto *Func = Result.Nodes.getNodeAs<CXXMethodDecl>("func");
-  if (Func != nullptr) {
-      auto Ret = Func->getReturnType();
-    if (auto TheType = Ret.getTypePtrOrNull(); TheType != nullptr) {
-      if (TheType->isVoidType()) {
-        return;
-      }
-      auto BTI = Ret.getBaseTypeIdentifier();
-      if (BTI->getName().str() == "Model") {
-        if (TheType->isPointerType()) {
-          diag(Func->getLocation(), "model is leaking (pointer)");
-        } else if (TheType->isReferenceType() && !Ret.isConstQualified()) {
-          // TODO non-const???????
-          std::cout << "we have a non-const reference return type\n";
-          diag(Func->getLocation(), "model is leaking (reference)");
-        }
-      }
+  for (auto const & Id : utils::LayerIds) {
+    const auto *LeakingReturnType = Result.Nodes.getNodeAs<CXXMethodDecl>(Id + "-leaking-return-type");
+    if (LeakingReturnType != nullptr)
+    {
+      diag(LeakingReturnType->getLocation(), "method leaks representation via return type");
+    }
+    const auto *LeakingField = Result.Nodes.getNodeAs<FieldDecl>(Id + "-leaking-field");
+    if (LeakingField != nullptr)
+    {
+      diag(LeakingField->getLocation(), "field leaks representation");
     }
   }
 }

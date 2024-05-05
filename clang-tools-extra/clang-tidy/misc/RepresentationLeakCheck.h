@@ -23,6 +23,9 @@ public:
       : ClangTidyCheck(Name, Context) {}
   void registerMatchers(ast_matchers::MatchFinder *Finder) override;
   void check(const ast_matchers::MatchFinder::MatchResult &Result) override;
+private:
+  void addCXXMethodMatcher(ast_matchers::MatchFinder *Finder, const std::string &Regex, const std::string & Id);
+  void addFieldMatcher(ast_matchers::MatchFinder *Finder, const std::string &Regex, const std::string & Id);
 };
 
 } // namespace clang::tidy::misc
