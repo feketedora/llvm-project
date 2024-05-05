@@ -1,31 +1,39 @@
-// RUN: %check_clang_tidy -std=c++14-or-later %s misc-persistence-stream %t
+// RUN: %check_clang_tidy %s misc-persistence-stream %t
 
-#include <iostream>
-#include <fstream>
+// mock
+namespace std {
+  class fstream {};
+}
+
+class QFile {}; // mock
 
 class MyStream : public std::fstream {};
 
 class MyModel
 {
-	void write(std::fstream f){}
-// CHECK-MESSAGES: :[[@LINE-1]]:7: warning: function has file stream parameter outside persistence class [misc-persistence-stream]
-	void test(int a, bool b) {}
+  void write(std::fstream f){}
+// CHECK-MESSAGES: :[[@LINE-1]]:27: warning: function handles files outside persistence class [misc-persistence-stream]
+  void persisting() { QFile v; }
+// CHECK-MESSAGES: :[[@LINE-1]]:29: warning: function handles files outside persistence class [misc-persistence-stream]
+  void test2(MyStream & par) {}
+// CHECK-MESSAGES: :[[@LINE-1]]:25: warning: function handles files outside persistence class [misc-persistence-stream]
 
-	int mFile;
-// CHECK-MESSAGES: :[[@LINE-1]]:6: warning: found file stream field outside persistence class [misc-persistence-stream]
-	bool mDummy;
-	char file2;
-// CHECK-MESSAGES: :[[@LINE-1]]:7: warning: found file stream field outside persistence class [misc-persistence-stream]
-	std::fstream thisisspecial;
-// CHECK-MESSAGES: :[[@LINE-1]]:15: warning: found file stream field outside persistence class [misc-persistence-stream]
-	MyStream y;
-// CHECK-MESSAGES: :[[@LINE-1]]:11: warning: found file stream field outside persistence class [misc-persistence-stream]
+  std::fstream thisisspecial;
+// CHECK-MESSAGES: :[[@LINE-1]]:16: warning: file handling field outside persistence class [misc-persistence-stream]
+  MyStream y;
+// CHECK-MESSAGES: :[[@LINE-1]]:12: warning: file handling field outside persistence class [misc-persistence-stream]
+  QFile f;
+// CHECK-MESSAGES: :[[@LINE-1]]:9: warning: file handling field outside persistence class [misc-persistence-stream]
+  QFile * fptr;
+// CHECK-MESSAGES: :[[@LINE-1]]:11: warning: file handling field outside persistence class [misc-persistence-stream]
+
+  void test(int a, bool b) {}
+  bool mDummy;
+  char file;
 };
 
-class MyPersistence {};
-
-class MyPersister {};
-
-class MyDataAccess {};
-
-class mydataaccess2 {};
+class MyPersistence {
+  void write(QFile f){}
+  void x() { std::fstream ofs; }
+  std::fstream var;
+};

@@ -15,35 +15,41 @@ using namespace clang::ast_matchers;
 namespace clang::tidy::misc {
 
 void PersistenceStreamCheck::registerMatchers(MatchFinder *Finder) {
-  auto AnyOf = anyOf(
-      matchesName("[f|F]ile"),
-      hasType(asString("std::fstream")),
-      hasType(asString("std::ifstream")),
-      hasType(asString("std::ofstream")),
-      hasType(cxxRecordDecl(isSameOrDerivedFrom("std::fstream"))),
-      hasType(cxxRecordDecl(isSameOrDerivedFrom("std::ifstream"))),
-      hasType(cxxRecordDecl(isSameOrDerivedFrom("std::ofstream"))));
-  Finder->addMatcher(recordDecl(unless(isExpansionInSystemHeader()),
-                                unless(matchesName(utils::PersistenceRegex)),
-                                forEach(fieldDecl(AnyOf)
-                                         .bind("file-field"))),
+  auto PersistenceMatch = matchesName(utils::PersistenceRegex);
+  auto FstreamRecord = cxxRecordDecl(isSameOrDerivedFrom("::std::fstream"));
+  auto IfstreamRecord = cxxRecordDecl(isSameOrDerivedFrom("::std::ifstream"));
+  auto OfstreamRecord = cxxRecordDecl(isSameOrDerivedFrom("::std::ofstream"));
+  auto QFileRecord = cxxRecordDecl(isSameOrDerivedFrom("::QFile"));
+  auto Types = anyOf(hasType(FstreamRecord), hasType(pointsTo(FstreamRecord)), hasType(references(FstreamRecord)),
+                     hasType(IfstreamRecord), hasType(pointsTo(IfstreamRecord)), hasType(references(IfstreamRecord)),
+                     hasType(OfstreamRecord), hasType(pointsTo(OfstreamRecord)), hasType(references(OfstreamRecord)),
+                     hasType(QFileRecord), hasType(pointsTo(QFileRecord)), hasType(references(QFileRecord)));
+
+  Finder->addMatcher(cxxRecordDecl(unless(isExpansionInSystemHeader()),
+                                   unless(PersistenceMatch),
+                                   forEach(fieldDecl(Types)
+                                            .bind("file-field"))),
                      this);
-  Finder->addMatcher(recordDecl(unless(isExpansionInSystemHeader()),
-                                unless(matchesName(utils::PersistenceRegex)),
-                                forEach(functionDecl(hasAnyParameter(AnyOf))
-                                         .bind("file-param"))),
+  Finder->addMatcher(cxxMethodDecl(unless(isExpansionInSystemHeader()),
+                                   isDefinition(),
+                                   unless(ofClass(PersistenceMatch)),
+                                   unless(ofClass(FstreamRecord)),
+                                   unless(ofClass(IfstreamRecord)),
+                                   unless(ofClass(OfstreamRecord)),
+                                   unless(ofClass(QFileRecord)),
+                                   forEachDescendant(varDecl(Types)
+                                                      .bind("file-variable"))),
                      this);
 }
 
 void PersistenceStreamCheck::check(const MatchFinder::MatchResult &Result) {
   const auto * FileField = Result.Nodes.getNodeAs<FieldDecl>("file-field");
   if (FileField != nullptr) {
-    diag(FileField->getLocation(), "found file stream field outside persistence class");
+    diag(FileField->getLocation(), "file handling field outside persistence class");
   }
-  const auto *FunctionWithFileParam = Result.Nodes.getNodeAs<FunctionDecl>("file-param");
-  if (FunctionWithFileParam != nullptr) {
-    diag(FunctionWithFileParam->getLocation(),
-         "function has file stream parameter outside persistence class");
+  const auto *FileVar = Result.Nodes.getNodeAs<VarDecl>("file-variable");
+  if (FileVar != nullptr) {
+    diag(FileVar->getLocation(), "function handles files outside persistence class");
   }
 }
 
