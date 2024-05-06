@@ -268,7 +268,7 @@ Clang-Tidy Checks
    `misc-no-recursion <misc/no-recursion.html>`_,
    `misc-non-copyable-objects <misc/non-copyable-objects.html>`_,
    `misc-non-private-member-variables-in-classes <misc/non-private-member-variables-in-classes.html>`_,
-   `misc-persistence-stream <misc/persistence-stream.html>`_,
+   `misc-persistence-file <misc/persistence-file.html>`_,
    `misc-public-members <misc/public-members.html>`_,
    `misc-redundant-expression <misc/redundant-expression.html>`_, "Yes"
    `misc-representation-leak <misc/representation-leak.html>`_,

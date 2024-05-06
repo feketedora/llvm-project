@@ -32,7 +32,7 @@ add_clang_library(clangTidyMiscModule
   NoRecursionCheck.cpp
   NonCopyableObjects.cpp
   NonPrivateMemberVariablesInClassesCheck.cpp
-  PersistenceStreamCheck.cpp
+  PersistenceFileCheck.cpp
   PublicMembersCheck.cpp
   RepresentationLeakCheck.cpp
   RedundantExpressionCheck.cpp

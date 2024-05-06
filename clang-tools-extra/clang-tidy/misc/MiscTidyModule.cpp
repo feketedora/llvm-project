@@ -23,7 +23,7 @@
 #include "NoRecursionCheck.h"
 #include "NonCopyableObjects.h"
 #include "NonPrivateMemberVariablesInClassesCheck.h"
-#include "PersistenceStreamCheck.h"
+#include "PersistenceFileCheck.h"
 #include "PublicMembersCheck.h"
 #include "RepresentationLeakCheck.h"
 #include "RedundantExpressionCheck.h"
@@ -68,8 +68,8 @@ public:
         "misc-non-copyable-objects");
     CheckFactories.registerCheck<NonPrivateMemberVariablesInClassesCheck>(
         "misc-non-private-member-variables-in-classes");
-    CheckFactories.registerCheck<PersistenceStreamCheck>(
-        "misc-persistence-stream");
+    CheckFactories.registerCheck<PersistenceFileCheck>(
+        "misc-persistence-file");
     CheckFactories.registerCheck<PublicMembersCheck>(
         "misc-public-members");
     CheckFactories.registerCheck<RepresentationLeakCheck>(

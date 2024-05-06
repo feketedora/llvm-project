@@ -150,8 +150,8 @@ New checks
 
   FIXME: add release notes.
 
-- New :doc:`misc-persistence-stream
-  <clang-tidy/checks/misc/persistence-stream>` check.
+- New :doc:`misc-persistence-file
+  <clang-tidy/checks/misc/persistence-file>` check.
 
   FIXME: add release notes.
 
