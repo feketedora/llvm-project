@@ -271,6 +271,7 @@ Clang-Tidy Checks
    `misc-persistence-stream <misc/persistence-stream.html>`_,
    `misc-public-members <misc/public-members.html>`_,
    `misc-redundant-expression <misc/redundant-expression.html>`_, "Yes"
+   `misc-representation-leak <misc/representation-leak.html>`_,
    `misc-static-assert <misc/static-assert.html>`_, "Yes"
    `misc-structured-namespace <misc/structured-namespace.html>`_,
    `misc-throw-by-value-catch-by-reference <misc/throw-by-value-catch-by-reference.html>`_,
