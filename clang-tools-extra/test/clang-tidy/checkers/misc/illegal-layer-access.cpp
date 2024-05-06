@@ -1,14 +1,21 @@
 // RUN: %check_clang_tidy %s misc-illegal-layer-access %t
 
-// FIXME: Add something that triggers the check here.
-void f();
-// CHECK-MESSAGES: :[[@LINE-1]]:6: warning: function 'f' is insufficiently awesome [misc-illegal-layer-access]
+class MyView {};
+class SubWindowClass : public MyView {};
 
-// FIXME: Verify the applied fix.
-//   * Make the CHECK patterns specific enough and try to make verified lines
-//     unique to avoid incorrect matches.
-//   * Use {{}} for regular expressions.
-// CHECK-FIXES: {{^}}void awesome_f();{{$}}
+class MyModel
+{
+  MyView dummy1;
+// CHECK-MESSAGES: [[@LINE-1]]:10: warning: model class must not have view or its descendant fields [misc-illegal-layer-access]
+  SubWindowClass * dummy2;
+// CHECK-MESSAGES: [[@LINE-1]]:20: warning: model class must not have view or its descendant fields [misc-illegal-layer-access]
 
-// FIXME: Add something that doesn't trigger the check here.
-void awesome_f2();
+  int dummy3;
+
+  void fun (MyView w, int i, SubWindowClass & d) {
+// CHECK-MESSAGES: [[@LINE-1]]:20: warning: model class must not use view or its descendants [misc-illegal-layer-access]
+// CHECK-MESSAGES: [[@LINE-2]]:47: warning: model class must not use view or its descendants [misc-illegal-layer-access]
+    MyView * var;
+// CHECK-MESSAGES: [[@LINE-1]]:14: warning: model class must not use view or its descendants [misc-illegal-layer-access]
+  }
+};
