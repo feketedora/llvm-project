@@ -14,6 +14,9 @@
 
 namespace clang::tidy::utils {
 
+const std::string UiPrefixRegex = "::.*Ui_.*";
+const std::string DataRegex = "::.*(d|D)ata$";
+
 const std::string ModelRegex = "::.*(m|M)odel$";
 const std::string ViewRegex = "::.*((v|V)iew|(w|W)indow)$";
 const std::string PersistenceRegex = "::.*((d|D)ata(a|A)ccess|(P|p)ersiste(nce|r))$";

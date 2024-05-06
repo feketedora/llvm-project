@@ -9,6 +9,7 @@
 #include "PublicMembersCheck.h"
 #include "clang/AST/ASTContext.h"
 #include "clang/ASTMatchers/ASTMatchFinder.h"
+#include "../utils/Utilities.h"
 
 using namespace clang::ast_matchers;
 
@@ -17,6 +18,8 @@ namespace clang::tidy::misc {
 void PublicMembersCheck::registerMatchers(MatchFinder *Finder) {
   Finder->addMatcher(cxxRecordDecl(unless(isExpansionInSystemHeader()),
                                    isDefinition(),
+                                   unless(matchesName(utils::UiPrefixRegex)),
+                                   unless(matchesName(utils::DataRegex)),
                                    forEach(fieldDecl(isPublic())
                                             .bind("public-field"))),
                      this);

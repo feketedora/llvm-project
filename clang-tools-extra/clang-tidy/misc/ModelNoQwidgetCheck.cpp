@@ -27,16 +27,18 @@ void ModelNoQwidgetCheck::registerMatchers(MatchFinder *Finder) {
                                                           qualType(CxxRecordDerivedFromQWidgetPointer),
                                                           qualType(CxxRecordDerivedFromQWidgetReference)));
   auto ModelMatch = matchesName(utils::ModelRegex);
-  auto ModelRecord = cxxRecordDecl(ModelMatch);
+  auto ModelRecord = cxxRecordDecl(ModelMatch, unless(matchesName(utils::UiPrefixRegex)));
 
   Finder->addMatcher(cxxRecordDecl(unless(isExpansionInSystemHeader()),
                                    isDefinition(),
+                                   unless(matchesName(utils::UiPrefixRegex)),
                                    ModelMatch,
                                    DerivedFromQWidget)
                       .bind("qwidget-class"),
                      this);
   Finder->addMatcher(cxxRecordDecl(unless(isExpansionInSystemHeader()),
                                    isDefinition(),
+                                   unless(matchesName(utils::UiPrefixRegex)),
                                    ModelMatch,
                                    forEach(fieldDecl(CxxRecordDerivedFromQWidgetType)
                                             .bind("qwidget-field"))),

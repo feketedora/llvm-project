@@ -28,9 +28,10 @@ namespace {
 
 void IllegalLayerAccessCheck::addMatchers(MatchFinder *Finder, const std::string & ContainerRegex,
                                           const std::string & ContainedRegex, const std::string & Id) {
-  auto ContainerMatch = matchesName(ContainerRegex);
+  auto ContainerMatch = allOf(matchesName(ContainerRegex), unless(matchesName(utils::UiPrefixRegex)));
   auto ContainerRecord = cxxRecordDecl(ContainerMatch);
-  auto ContainedRecord = cxxRecordDecl(isSameOrDerivedFrom(matchesName(ContainedRegex)));
+  auto ContainedRecord = cxxRecordDecl(isSameOrDerivedFrom(matchesName(ContainedRegex)),
+                                       unless(matchesName(utils::UiPrefixRegex)));
   auto ContainedTypes = anyOf(hasType(ContainedRecord),
                               hasType(pointsTo(ContainedRecord)),
                               hasType(references(ContainedRecord)));

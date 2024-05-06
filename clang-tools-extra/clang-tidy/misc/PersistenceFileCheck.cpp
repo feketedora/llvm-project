@@ -27,6 +27,7 @@ void PersistenceFileCheck::registerMatchers(MatchFinder *Finder) {
 
   Finder->addMatcher(cxxRecordDecl(unless(isExpansionInSystemHeader()),
                                    unless(PersistenceMatch),
+                                   unless(matchesName(utils::UiPrefixRegex)),
                                    forEach(fieldDecl(Types)
                                             .bind("file-field"))),
                      this);

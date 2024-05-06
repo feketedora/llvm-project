@@ -16,7 +16,7 @@ namespace clang::tidy::misc {
 
 void RepresentationLeakCheck::addCXXMethodMatcher(MatchFinder *Finder, const std::string &Regex,
                                                   const std::string & Id) {
-  auto RecordType = cxxRecordDecl(isSameOrDerivedFrom(matchesName(Regex)));
+  auto RecordType = cxxRecordDecl(isSameOrDerivedFrom(matchesName(Regex)), unless(matchesName(utils::UiPrefixRegex)));
   auto PointerReturnType = returns(pointsTo(RecordType));
   auto NonConstReferenceReturnType = allOf(returns(references(RecordType)),
                                            returns(referenceType(pointee(unless(isConstQualified())))));
@@ -30,12 +30,13 @@ void RepresentationLeakCheck::addCXXMethodMatcher(MatchFinder *Finder, const std
 
 void RepresentationLeakCheck::addFieldMatcher(MatchFinder *Finder, const std::string &Regex,
                                               const std::string & Id) {
-  auto RecordType = cxxRecordDecl(isSameOrDerivedFrom(matchesName(Regex)));
+  auto RecordType = cxxRecordDecl(isSameOrDerivedFrom(matchesName(Regex)), unless(matchesName(utils::UiPrefixRegex)));
   auto FieldType = anyOf(hasType(RecordType),
-                        hasType(pointsTo(RecordType)),
-                        hasType(references(RecordType)));
+                         hasType(pointsTo(RecordType)),
+                         hasType(references(RecordType)));
   Finder->addMatcher(cxxRecordDecl(unless(isExpansionInSystemHeader()),
                                    isDefinition(),
+                                   unless(matchesName(utils::UiPrefixRegex)),
                                    forEach(fieldDecl(isPublic(),
                                                      FieldType)
                                             .bind(Id + "-leaking-field"))),
