@@ -48,14 +48,16 @@ void StructuredNamespaceCheck::checkOne(const MatchFinder::MatchResult &Result, 
 }
 
 void StructuredNamespaceCheck::check(const MatchFinder::MatchResult &Result) {
-  checkOne(Result, utils::ModelNodeId, utils::ViewNodeId, utils::ViewNodeId);
   checkOne(Result, utils::ViewNodeId, utils::ModelNodeId, utils::ModelNodeId);
+  checkOne(Result, utils::PersistenceNodeId, utils::ModelNodeId, utils::ModelNodeId);
+  for (auto const & variant : utils::ViewVariants) {
+    checkOne(Result, utils::ModelNodeId, utils::ViewNodeId, variant);
+    checkOne(Result, utils::PersistenceNodeId, utils::ViewNodeId, variant);
+  }
   for (auto const & variant : utils::PersistenceVariants) {
     checkOne(Result, utils::ModelNodeId, utils::PersistenceNodeId, variant);
     checkOne(Result, utils::ViewNodeId, utils::PersistenceNodeId, variant);
   }
-  checkOne(Result, utils::PersistenceNodeId, utils::ViewNodeId, utils::ViewNodeId);
-  checkOne(Result, utils::PersistenceNodeId, utils::ModelNodeId, utils::ModelNodeId);
 }
 
 } // namespace clang::tidy::misc
