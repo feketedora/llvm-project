@@ -19,7 +19,7 @@ const std::string DataRegex = "::.*(d|D)ata$";
 
 const std::string ModelRegex = "::.*(m|M)odel$";
 const std::string ViewRegex = "::.*((v|V)iew|(w|W)indow)$";
-const std::string PersistenceRegex = "::.*((d|D)ata(a|A)ccess|(P|p)ersiste(nce|r))$";
+const std::string PersistenceRegex = "::.*((d|D)ata((a|A)ccess|(b|B)ase)|(P|p)ers(iste(nce|r))?)$";
 
 const std::string ModelNodeId = "model";
 const std::string ViewNodeId = "view";

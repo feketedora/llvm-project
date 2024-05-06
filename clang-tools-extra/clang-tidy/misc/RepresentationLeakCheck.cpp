@@ -56,13 +56,11 @@ void RepresentationLeakCheck::registerMatchers(MatchFinder *Finder) {
 void RepresentationLeakCheck::check(const MatchFinder::MatchResult &Result) {
   for (auto const & Id : utils::LayerIds) {
     const auto *LeakingReturnType = Result.Nodes.getNodeAs<CXXMethodDecl>(Id + "-leaking-return-type");
-    if (LeakingReturnType != nullptr)
-    {
+    if (LeakingReturnType != nullptr) {
       diag(LeakingReturnType->getLocation(), "method leaks representation via return type");
     }
     const auto *LeakingField = Result.Nodes.getNodeAs<FieldDecl>(Id + "-leaking-field");
-    if (LeakingField != nullptr)
-    {
+    if (LeakingField != nullptr) {
       diag(LeakingField->getLocation(), "field leaks representation");
     }
   }

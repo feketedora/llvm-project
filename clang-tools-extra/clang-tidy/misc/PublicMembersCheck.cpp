@@ -18,6 +18,7 @@ namespace clang::tidy::misc {
 void PublicMembersCheck::registerMatchers(MatchFinder *Finder) {
   Finder->addMatcher(cxxRecordDecl(unless(isExpansionInSystemHeader()),
                                    isDefinition(),
+                                   isClass(),
                                    unless(matchesName(utils::UiPrefixRegex)),
                                    unless(matchesName(utils::DataRegex)),
                                    forEach(fieldDecl(isPublic())
@@ -28,7 +29,7 @@ void PublicMembersCheck::registerMatchers(MatchFinder *Finder) {
 void PublicMembersCheck::check(const MatchFinder::MatchResult &Result) {
   const auto *MatchedDecl = Result.Nodes.getNodeAs<FieldDecl>("public-field");
   if (MatchedDecl != nullptr) {
-    diag(MatchedDecl->getLocation(), "avoid using public members, use private members with getter and setter methods instead");
+    diag(MatchedDecl->getBeginLoc(), "avoid using public members, use private members with getter and setter methods instead");
   }
 }
 

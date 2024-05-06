@@ -1,10 +1,9 @@
 // RUN: %check_clang_tidy %s misc-public-members %t
 
 struct Struct {
-  int var;
-// CHECK-MESSAGES: :[[@LINE-1]]:7: warning: avoid using public members, use private members with getter and setter methods instead [misc-public-members]
+  int legallyPublicVar;
 private:
-  bool pred;
+  bool privateVar;
 };
 
 class MyClass {
