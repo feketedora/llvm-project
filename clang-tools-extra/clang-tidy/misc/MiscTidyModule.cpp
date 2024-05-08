@@ -18,7 +18,7 @@
 #include "MisleadingBidirectional.h"
 #include "MisleadingIdentifier.h"
 #include "MisplacedConstCheck.h"
-#include "ModelNoQwidgetCheck.h"
+#include "QwidgetBaseCheck.h"
 #include "NewDeleteOverloadsCheck.h"
 #include "NoRecursionCheck.h"
 #include "NonCopyableObjects.h"
@@ -59,8 +59,8 @@ public:
     CheckFactories.registerCheck<MisleadingIdentifierCheck>(
         "misc-misleading-identifier");
     CheckFactories.registerCheck<MisplacedConstCheck>("misc-misplaced-const");
-    CheckFactories.registerCheck<ModelNoQwidgetCheck>(
-        "misc-model-no-qwidget");
+    CheckFactories.registerCheck<QwidgetBaseCheck>(
+        "misc-qwidget-base");
     CheckFactories.registerCheck<NewDeleteOverloadsCheck>(
         "misc-new-delete-overloads");
     CheckFactories.registerCheck<NoRecursionCheck>("misc-no-recursion");

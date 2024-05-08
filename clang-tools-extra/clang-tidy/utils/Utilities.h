@@ -19,13 +19,14 @@ const std::string DataRegex = "::.*(d|D)ata$";
 
 const std::string ModelRegex = "::.*(m|M)odel$";
 const std::string ViewRegex = "::.*((v|V)iew|(w|W)indow)$";
-const std::string PersistenceRegex = "::.*((d|D)ata((a|A)ccess|(b|B)ase)|(P|p)ers(iste(nce|r))?)$";
+const std::string PersistenceRegex = "::.*((d|D)ata((a|A)ccess|(b|B)ase)|(P|p)ers(iste(nc(e|y)|r))?)$";
 
 const std::string ModelNodeId = "model";
 const std::string ViewNodeId = "view";
 const std::vector<std::string> ViewVariants = {ViewNodeId, "window"};
 const std::string PersistenceNodeId = "persistence";
-const std::vector<std::string> PersistenceVariants = {PersistenceNodeId, "persister", "dataaccess"};
+const std::vector<std::string> PersistenceVariants = {PersistenceNodeId, "persistency", "persister", "pers",
+												      "dataaccess", "database"};
 const std::vector<std::string> LayerIds = {ModelNodeId, ViewNodeId, PersistenceNodeId};
 
 std::vector<std::string> splitLowercase(std::string const &s, std::string const &delimiter);

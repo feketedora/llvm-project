@@ -145,8 +145,8 @@ New checks
 
   FIXME: add release notes.
 
-- New :doc:`misc-model-no-qwidget
-  <clang-tidy/checks/misc/model-no-qwidget>` check.
+- New :doc:`misc-qwidget-base
+  <clang-tidy/checks/misc/qwidget-base>` check.
 
   FIXME: add release notes.
 
