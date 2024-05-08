@@ -160,11 +160,6 @@ New checks
 
   FIXME: add release notes.
 
-- New :doc:`misc-structured-namespace
-  <clang-tidy/checks/misc/structured-namespace>` check.
-
-  FIXME: add release notes.
-
 - New :doc:`misc-representation-leak
   <clang-tidy/checks/misc/representation-leak>` check.
 
@@ -172,21 +167,6 @@ New checks
 
 - New :doc:`misc-structured-namespace
   <clang-tidy/checks/misc/structured-namespace>` check.
-
-  FIXME: add release notes.
-
-- New :doc:`modernize-use-ranges
-  <clang-tidy/checks/modernize/use-ranges>` check.
-
-  FIXME: add release notes.
-
-- New :doc:`readability-early-exit
-  <clang-tidy/checks/readability/early-exit>` check.
-
-  FIXME: add release notes.
-
-- New :doc:`readability-simplify-bool-expressions
-  <clang-tidy/checks/readability/simplify-bool-expressions>` check.
 
   FIXME: add release notes.
 

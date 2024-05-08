@@ -38,7 +38,6 @@
 #include "UseNoexceptCheck.h"
 #include "UseNullptrCheck.h"
 #include "UseOverrideCheck.h"
-#include "UseRangesCheck.h"
 #include "UseStdPrintCheck.h"
 #include "UseTrailingReturnTypeCheck.h"
 #include "UseTransparentFunctorsCheck.h"
@@ -66,8 +65,6 @@ public:
     CheckFactories.registerCheck<MakeSharedCheck>("modernize-make-shared");
     CheckFactories.registerCheck<MakeUniqueCheck>("modernize-make-unique");
     CheckFactories.registerCheck<PassByValueCheck>("modernize-pass-by-value");
-    CheckFactories.registerCheck<UseRangesCheck>(
-        "modernize-use-ranges");
     CheckFactories.registerCheck<UseStdPrintCheck>("modernize-use-std-print");
     CheckFactories.registerCheck<RawStringLiteralCheck>(
         "modernize-raw-string-literal");
