@@ -64,3 +64,6 @@ class MyPersistence
 
 class myView : public QObject {};
 // CHECK-MESSAGES: [[@LINE-1]]:7: warning: view class must derive from QWidget [misc-qwidget-base]
+
+class Ui_MyView {}; // mock
+class MyView : public Ui_MyView {};

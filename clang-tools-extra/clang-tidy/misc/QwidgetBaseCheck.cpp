@@ -64,7 +64,8 @@ void QwidgetBaseCheck::registerMatchers(MatchFinder *Finder) {
                                    isDefinition(),
                                    unless(matchesName(utils::UiPrefixRegex)),
                                    matchesName(utils::ViewRegex),
-                                   unless(isSameOrDerivedFrom("::QWidget")))
+                                   unless(isSameOrDerivedFrom("::QWidget")),
+                                   unless(isSameOrDerivedFrom(matchesName(utils::UiPrefixRegex))))
                       .bind("view-no-qwidget-class"),
                      this);
 }
