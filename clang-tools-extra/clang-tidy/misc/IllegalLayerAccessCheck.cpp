@@ -18,8 +18,10 @@ namespace clang::tidy::misc {
 namespace {
   using Record = std::tuple<std::string, std::string, std::string, std::string>;
   const std::vector<Record> Data = {
+    {utils::ViewNodeId, utils::PersistenceNodeId, utils::ViewRegex, utils::PersistenceRegex},
     {utils::ModelNodeId, utils::ViewNodeId, utils::ModelRegex, utils::ViewRegex},
-    {utils::ViewNodeId, utils::PersistenceNodeId, utils::ViewRegex, utils::PersistenceRegex}
+    {utils::PersistenceNodeId, utils::ModelNodeId, utils::PersistenceRegex, utils::ModelRegex},
+    {utils::PersistenceNodeId, utils::ViewNodeId, utils::PersistenceRegex, utils::ViewRegex}
   };
   std::string getId(const Record & R) {
     return std::get<0>(R) + "-" + std::get<1>(R);
