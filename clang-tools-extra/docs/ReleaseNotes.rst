@@ -164,7 +164,8 @@ New checks
 - New :doc:`misc-representation-leak
   <clang-tidy/checks/misc/representation-leak>` check.
 
-  FIXME: add release notes.
+  Checks whether a class leaks model, view or persistent component representation
+  via either a public field or function return type
 
 - New :doc:`misc-structured-namespace
   <clang-tidy/checks/misc/structured-namespace>` check.

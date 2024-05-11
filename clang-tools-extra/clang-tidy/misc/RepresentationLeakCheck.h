@@ -13,7 +13,8 @@
 
 namespace clang::tidy::misc {
 
-/// FIXME: Write a short description.
+/// Checks whether a class leaks model, view or persistent component representation
+/// via either a public field or function return type
 ///
 /// For the user-facing documentation see:
 /// http://clang.llvm.org/extra/clang-tidy/checks/misc/representation-leak.html
