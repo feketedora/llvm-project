@@ -148,7 +148,8 @@ New checks
 - New :doc:`misc-qwidget-base
   <clang-tidy/checks/misc/qwidget-base>` check.
 
-  FIXME: add release notes.
+  Checks whether the persistence and model components do not derive from or use QWidgets,
+  in case of the view component, checks whether it has QWidget as base class
 
 - New :doc:`misc-persistence-file
   <clang-tidy/checks/misc/persistence-file>` check.

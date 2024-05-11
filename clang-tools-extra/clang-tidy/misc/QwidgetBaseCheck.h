@@ -13,7 +13,8 @@
 
 namespace clang::tidy::misc {
 
-/// FIXME: Write a short description.
+/// Checks whether the persistence and model components do not derive from or use QWidgets,
+/// in case of the view component, checks whether it has QWidget as base class
 ///
 /// For the user-facing documentation see:
 /// http://clang.llvm.org/extra/clang-tidy/checks/misc/qwidget-base.html
