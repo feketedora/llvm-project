@@ -13,7 +13,8 @@
 
 namespace clang::tidy::misc {
 
-/// FIXME: Write a short description.
+/// Checks whether the components (model, view, persistence) belong to
+/// the correct corresponding namespace structure, if any namespaces exist
 ///
 /// For the user-facing documentation see:
 /// http://clang.llvm.org/extra/clang-tidy/checks/misc/structured-namespace.html

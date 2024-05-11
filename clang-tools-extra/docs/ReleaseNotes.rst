@@ -170,7 +170,8 @@ New checks
 - New :doc:`misc-structured-namespace
   <clang-tidy/checks/misc/structured-namespace>` check.
 
-  FIXME: add release notes.
+  Checks whether the components (model, view, persistence) belong to
+  the correct corresponding namespace structure, if any namespaces exist.
 
 - New :doc:`bugprone-unique-ptr-array-mismatch
   <clang-tidy/checks/bugprone/unique-ptr-array-mismatch>` check.
