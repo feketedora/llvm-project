@@ -28,10 +28,10 @@ and the field is or derives from QWidget
 .. code-block:: c++
   class Model {
     QWidget MyWidget;
-  }
+  };
 
 3. Binds all C++ method declarations that are defining a method of classes that match
-the model/persistence component regular expression, except when the class name starts with ``Ui_``,
+the model/persistence component's regular expression, except when the class name starts with ``Ui_``,
 and anywhere inside their AST there is a variable (including function parameters)
 that is or is derived from QWidget, including references and pointers
 
@@ -40,16 +40,16 @@ that is or is derived from QWidget, including references and pointers
   class MyPersistence {
     void fun1 (Derived & D, QPushButton * B) {
       QWidget Var;
-    }
+    };
 
 4. Binds all C++ method declarations that are defining a method of classes that match
-the model/persistence component regular expression, except when the class name starts with ``Ui_``,
+the model/persistence component's regular expression, except when the class name starts with ``Ui_``,
 and their return type is or is derived from QWidget, including references and pointers
 
 .. code-block:: c++
   class Model {
     QWidget * getWidget();
-  }
+  };
 
 For the view component, only one matcher is registered.
 It binds all C++ record declarations that are defining a class,
