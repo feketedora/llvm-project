@@ -3,7 +3,7 @@
 misc-persistence-file
 =======================
 
-Checks whether there is file handling outside of the persistence component
+Checks whether there is file handling outside of the persistence component.
 
 In the correct structure only the persistence layer should access the disk
 and save to or load from files.

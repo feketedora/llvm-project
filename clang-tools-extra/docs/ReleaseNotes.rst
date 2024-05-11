@@ -143,18 +143,18 @@ New checks
 - New :doc:`misc-illegal-layer-access
   <clang-tidy/checks/misc/illegal-layer-access>` check.
 
-  FIXME: add release notes.
+  Checks the correct containment of the components: view contains model, model contains persistence.
 
 - New :doc:`misc-qwidget-base
   <clang-tidy/checks/misc/qwidget-base>` check.
 
   Checks whether the persistence and model components do not derive from or use QWidgets,
-  in case of the view component, checks whether it has QWidget as base class
+  in case of the view component, checks whether it has QWidget as base class.
 
 - New :doc:`misc-persistence-file
   <clang-tidy/checks/misc/persistence-file>` check.
 
-  Checks whether there is file handling outside of the persistence component
+  Checks whether there is file handling outside of the persistence component.
 
 - New :doc:`misc-public-members
   <clang-tidy/checks/misc/public-members>` check.
@@ -165,7 +165,7 @@ New checks
   <clang-tidy/checks/misc/representation-leak>` check.
 
   Checks whether a class leaks model, view or persistent component representation
-  via either a public field or function return type
+  via either a public field or function return type.
 
 - New :doc:`misc-structured-namespace
   <clang-tidy/checks/misc/structured-namespace>` check.

@@ -13,7 +13,7 @@
 
 namespace clang::tidy::misc {
 
-/// FIXME: Write a short description.
+/// Checks the correct containment of the components: view contains model, model contains persistence
 ///
 /// For the user-facing documentation see:
 /// http://clang.llvm.org/extra/clang-tidy/checks/misc/illegal-layer-access.html
