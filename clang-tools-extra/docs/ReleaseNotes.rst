@@ -159,7 +159,7 @@ New checks
 - New :doc:`misc-public-members
   <clang-tidy/checks/misc/public-members>` check.
 
-  FIXME: add release notes.
+  Checks public fields in C++ records that are defined with the class keyword.
 
 - New :doc:`misc-representation-leak
   <clang-tidy/checks/misc/representation-leak>` check.

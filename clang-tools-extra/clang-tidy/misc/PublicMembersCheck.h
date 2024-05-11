@@ -13,7 +13,7 @@
 
 namespace clang::tidy::misc {
 
-/// FIXME: Write a short description.
+/// Checks public fields in C++ records that are defined with the class keyword
 ///
 /// For the user-facing documentation see:
 /// http://clang.llvm.org/extra/clang-tidy/checks/misc/public-members.html
