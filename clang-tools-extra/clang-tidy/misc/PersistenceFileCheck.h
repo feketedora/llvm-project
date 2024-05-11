@@ -13,7 +13,7 @@
 
 namespace clang::tidy::misc {
 
-/// FIXME: Write a short description.
+/// Checks whether there is file handling outside of the persistence component
 ///
 /// For the user-facing documentation see:
 /// http://clang.llvm.org/extra/clang-tidy/checks/misc/persistence-file.html

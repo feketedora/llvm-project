@@ -154,7 +154,7 @@ New checks
 - New :doc:`misc-persistence-file
   <clang-tidy/checks/misc/persistence-file>` check.
 
-  FIXME: add release notes.
+  Checks whether there is file handling outside of the persistence component
 
 - New :doc:`misc-public-members
   <clang-tidy/checks/misc/public-members>` check.
